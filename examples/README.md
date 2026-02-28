@@ -13,9 +13,9 @@ These examples show the progression from initial prototype to production-grade s
 Initial proof-of-concept using Microsoft AutoGen framework with 5 agents including CatalystAgent.
 
 **Files:**
-- `analysis_AAPL_20260122_101319_with_debate.json` - Apple analysis with full debate log
-- `analysis_NVDA_20260122_102007_with_debate.json` - NVIDIA analysis with disagreement reconciliation
-- `summary of debate on NVidia.md` - Detailed narrative of agent disagreements and resolution
+- `autogen_AAPL_analysis_with_debate.json` - Apple analysis with full debate log
+- `autogen_NVDA_analysis_with_debate.json` - NVIDIA analysis with disagreement reconciliation
+- `autogen_NVDA_debate_summary.md` - Detailed narrative of agent disagreements and resolution
 
 **Key Features:**
 - 5 specialist agents (Quality, Value, Technical, Sentiment, Catalyst)
@@ -33,7 +33,7 @@ The Valuation Agent initially scored 5/100 (extremely bearish on valuation), whi
 Migrated to CrewAI framework for better cost efficiency and agent coordination.
 
 **Files:**
-- `ServiceNow_Analysis_Complete.md` - ServiceNow analysis demonstrating new format
+- `crewai_v1_ServiceNow_analysis.md` - ServiceNow analysis demonstrating new format
 - Maintained 5-agent structure with improved orchestration
 - 50-70% cost reduction vs AutoGen
 
@@ -50,12 +50,12 @@ Migrated to CrewAI framework for better cost efficiency and agent coordination.
 Further refinement of agent outputs with per-agent text files.
 
 **Files:**
-- `analysis_NVDA_20260205_212556.txt` - Final synthesis report
-- `analysis_NVDA_20260205_212556_quality.txt` - Quality Agent output
-- `analysis_NVDA_20260205_212556_value.txt` - Valuation Agent output
-- `analysis_NVDA_20260205_212556_technical.txt` - Technical Agent output
-- `analysis_NVDA_20260205_212556_sentiment.txt` - Sentiment Agent output
-- `analysis_NVDA_20260205_212556_catalyst.txt` - Catalyst Agent output
+- `crewai_v2_NVDA_final_synthesis.txt` - Final synthesis report
+- `crewai_v2_NVDA_quality_agent.txt` - Quality Agent output
+- `crewai_v2_NVDA_value_agent.txt` - Valuation Agent output
+- `crewai_v2_NVDA_technical_agent.txt` - Technical Agent output
+- `crewai_v2_NVDA_sentiment_agent.txt` - Sentiment Agent output
+- `crewai_v2_NVDA_catalyst_agent.txt` - Catalyst Agent output
 
 **Key Features:**
 - Separate files per agent for transparency
