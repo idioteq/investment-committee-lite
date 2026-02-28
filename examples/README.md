@@ -2,6 +2,14 @@
 
 This directory contains real investment analysis outputs demonstrating the evolution of the multi-agent committee system from December 2025 to February 2026.
 
+## Start Here
+
+**New to this project?** Start with these files to understand the system:
+
+1. **[autogen_NVDA_debate_summary.md](./autogen_NVDA_debate_summary.md)** - Narrative walkthrough of agent disagreement and reconciliation
+2. **[autogen_NVDA_analysis_with_debate.json](./autogen_NVDA_analysis_with_debate.json)** - Complete JSON output showing all agent interactions
+3. **[crewai_v2_NVDA_final_synthesis.txt](./crewai_v2_NVDA_final_synthesis.txt)** - Production-quality final report
+
 ---
 
 ## Evolution of the System
@@ -13,18 +21,23 @@ These examples show the progression from initial prototype to production-grade s
 Initial proof-of-concept using Microsoft AutoGen framework with 5 agents including CatalystAgent.
 
 **Files:**
-- `autogen_AAPL_analysis_with_debate.json` - Apple analysis with full debate log
-- `autogen_NVDA_analysis_with_debate.json` - NVIDIA analysis with disagreement reconciliation
-- `autogen_NVDA_debate_summary.md` - Detailed narrative of agent disagreements and resolution
+
+- [autogen_AAPL_analysis_with_debate.json](./autogen_AAPL_analysis_with_debate.json) - Apple analysis with full debate log
+- [autogen_NVDA_analysis_with_debate.json](./autogen_NVDA_analysis_with_debate.json) - NVIDIA analysis with disagreement reconciliation
+- [autogen_NVDA_debate_summary.md](./autogen_NVDA_debate_summary.md) - Detailed narrative of agent disagreements and resolution
 
 **Key Features:**
+
 - 5 specialist agents (Quality, Value, Technical, Sentiment, Catalyst)
 - AutoGen orchestration
 - Extensive debate logs showing agent-to-agent dialogue
 - JSON output with complete conversation history
 
 **Example Insight from NVDA Debate:**
+
 The Valuation Agent initially scored 5/100 (extremely bearish on valuation), while Quality Agent scored 92/100. After reconciliation, Valuation adjusted to 20/100 after acknowledging operational efficiency metrics. Demonstrates real multi-agent disagreement resolution.
+
+**Note:** CatalystAgent appears only in these historical examples. The public Investment-Committee-Lite demo intentionally excludes it (see Version 4 below).
 
 ---
 
@@ -33,15 +46,16 @@ The Valuation Agent initially scored 5/100 (extremely bearish on valuation), whi
 Migrated to CrewAI framework for better cost efficiency and agent coordination.
 
 **Files:**
-- `crewai_v1_ServiceNow_analysis.md` - ServiceNow analysis demonstrating new format
-- Maintained 5-agent structure with improved orchestration
-- 50-70% cost reduction vs AutoGen
+
+- [crewai_v1_ServiceNow_analysis.md](./crewai_v1_ServiceNow_analysis.md) - ServiceNow analysis demonstrating new format
 
 **Key Improvements:**
-- More efficient token usage
+
+- In my testing, CrewAI reduced token usage and costs materially vs AutoGen
 - Cleaner output formatting
 - Better agent task delegation
 - Structured markdown reports
+- Maintained 5-agent structure with improved orchestration
 
 ---
 
@@ -50,14 +64,16 @@ Migrated to CrewAI framework for better cost efficiency and agent coordination.
 Further refinement of agent outputs with per-agent text files.
 
 **Files:**
-- `crewai_v2_NVDA_final_synthesis.txt` - Final synthesis report
-- `crewai_v2_NVDA_quality_agent.txt` - Quality Agent output
-- `crewai_v2_NVDA_value_agent.txt` - Valuation Agent output
-- `crewai_v2_NVDA_technical_agent.txt` - Technical Agent output
-- `crewai_v2_NVDA_sentiment_agent.txt` - Sentiment Agent output
-- `crewai_v2_NVDA_catalyst_agent.txt` - Catalyst Agent output
+
+- [crewai_v2_NVDA_final_synthesis.txt](./crewai_v2_NVDA_final_synthesis.txt) - Final synthesis report
+- [crewai_v2_NVDA_quality_agent.txt](./crewai_v2_NVDA_quality_agent.txt) - Quality Agent output
+- [crewai_v2_NVDA_value_agent.txt](./crewai_v2_NVDA_value_agent.txt) - Valuation Agent output
+- [crewai_v2_NVDA_technical_agent.txt](./crewai_v2_NVDA_technical_agent.txt) - Technical Agent output
+- [crewai_v2_NVDA_sentiment_agent.txt](./crewai_v2_NVDA_sentiment_agent.txt) - Sentiment Agent output
+- [crewai_v2_NVDA_catalyst_agent.txt](./crewai_v2_NVDA_catalyst_agent.txt) - Catalyst Agent output
 
 **Key Features:**
+
 - Separate files per agent for transparency
 - More detailed agent-level analysis
 - Improved evidence citations
@@ -70,6 +86,7 @@ Further refinement of agent outputs with per-agent text files.
 Public-ready educational demo with 4 agents (NO CatalystAgent - Primer-specific).
 
 **What Changed:**
+
 - Removed CatalystAgent (proprietary to production system)
 - Simplified to 4 specialist agents (Fundamentals, Valuation, Technical, Sentiment)
 - Added mock mode for testing without API keys
@@ -79,6 +96,7 @@ Public-ready educational demo with 4 agents (NO CatalystAgent - Primer-specific)
 - Provider-agnostic (OpenAI + Anthropic)
 
 **To Generate New Examples:**
+
 ```bash
 # Mock mode (no API keys required)
 uv run committee-lite analyze TICKER --mock --json
@@ -95,16 +113,19 @@ uv run committee-lite analyze TICKER --threshold 10 --json
 ## Key Insights from Examples
 
 ### 1. Disagreement is Expected
+
 - Valuation agents are typically more conservative than fundamentals agents
 - Technical agents focus on short-term signals vs long-term fundamentals
 - Score spreads of 40-90 points are common for growth stocks
 
 ### 2. Reconciliation Adds Value
+
 - Agents update scores ~30% of the time after seeing peer perspectives
 - Dissenting views are explicitly documented
 - Final decisions incorporate multi-dimensional analysis
 
 ### 3. Evidence-Based Analysis
+
 - All agents cite specific data sources (financials, technical indicators, analyst consensus)
 - Rationale includes exact numbers and metrics
 - Invalidation criteria provide clear risk checkpoints
@@ -113,26 +134,30 @@ uv run committee-lite analyze TICKER --threshold 10 --json
 
 ## Using These Examples
 
-**For Newsletter/Blog:**
+### For Newsletter/Blog
+
 - Show how multi-agent systems handle disagreement
 - Demonstrate the evolution from prototype to production
 - Illustrate different architectural choices (AutoGen vs CrewAI)
 
-**For Learning:**
+### For Learning
+
 - Compare agent outputs across versions
 - Study how disagreement is resolved
 - Understand trade-offs between frameworks
 
-**For Development:**
+### For Development
+
 - Reference output formats when building similar systems
 - Learn from agent prompt structures
 - Understand debate log schemas
 
 ---
 
-**⚠️ IMPORTANT DISCLAIMER**
+## ⚠️ IMPORTANT DISCLAIMER
 
 All analyses in this folder are educational demonstrations only. They are:
+
 - NOT investment advice
 - NOT suitable for real trading decisions
 - NOT validated against historical performance
