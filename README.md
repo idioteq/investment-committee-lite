@@ -32,49 +32,14 @@ A lightweight demo showcasing how multiple AI agents can collaborate to analyze 
 
 ## Architecture
 
-```
-                    INVESTMENT COMMITTEE
-                           │
-        ┌──────────────────┼──────────────────┐
-        │                  │                  │
-   ┌────▼────┐       ┌─────▼──────┐     ┌────▼─────┐
-   │Fundamen-│       │ Valuation  │     │Technical │
-   │  tals   │       │ (2-stg DCF)│     │          │
-   └────┬────┘       └─────┬──────┘     └────┬─────┘
-        │                  │                  │
-        │            ┌─────▼──────┐           │
-        │            │ Sentiment  │           │
-        │            └─────┬──────┘           │
-        │                  │                  │
-        └──────────────────┼──────────────────┘
-                           │
-                ┌──────────▼───────────┐
-                │  Score Spread Check  │
-                └──────────┬───────────┘
-                           │
-                  ┌────────▼─────────┐
-                  │ > Threshold?     │
-                  └────┬────────┬────┘
-                     YES       NO
-                      │         │
-            ┌─────────▼──┐      │
-            │Reconcile   │      │
-            │Round       │      │
-            │(Debate Log)│      │
-            └─────────┬──┘      │
-                      │         │
-                  ┌───▼─────────▼────┐
-                  │Portfolio Manager │
-                  │  (Synthesize)    │
-                  └───────┬──────────┘
-                          │
-                     ┌────▼────┐
-                     │ Final   │
-                     │Decision │
-                     │+ Debate │
-                     │  Log    │
-                     └─────────┘
-```
+![Architecture Diagram](docs/images/architecture.png)
+
+**System Flow:**
+1. **4 Specialist Agents** analyze the stock independently (Fundamentals, Valuation, Technical, Sentiment)
+2. **Score Spread Check** determines if agent scores diverge beyond threshold
+3. **Reconciliation Round** (optional) allows agents to update scores after reviewing peers' perspectives
+4. **Portfolio Manager** synthesizes all views into final decision
+5. **Output** includes decision packet, dissent log, and structured JSON
 
 ---
 
@@ -220,6 +185,8 @@ When agent score spread exceeds threshold (default: 15 points):
 4. All updates logged in debate transcript
 5. Dissenting views explicitly documented
 
+![Disagreement Handling Flow](docs/images/disagreement-handling.png)
+
 ### 3. Structured Output
 
 All outputs are Pydantic models:
@@ -235,6 +202,8 @@ Perfect for testing, CI/CD, and demonstrations:
 - Deterministic canned responses
 - Full pipeline exercised
 - Tests can run anywhere
+
+![Mock Mode vs Real Mode](docs/images/mock-mode.png)
 
 ---
 

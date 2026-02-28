@@ -74,9 +74,19 @@ Be concise but specific. Include exact numbers in your points."""
             temperature=0.7,
         )
 
-        # Parse JSON response
+        # Parse JSON response (strip markdown code blocks if present)
         try:
-            data = json.loads(response)
+            # Remove markdown code blocks if present
+            cleaned_response = response.strip()
+            if cleaned_response.startswith("```json"):
+                cleaned_response = cleaned_response[7:]  # Remove ```json
+            elif cleaned_response.startswith("```"):
+                cleaned_response = cleaned_response[3:]  # Remove ```
+            if cleaned_response.endswith("```"):
+                cleaned_response = cleaned_response[:-3]  # Remove trailing ```
+            cleaned_response = cleaned_response.strip()
+
+            data = json.loads(cleaned_response)
             return AgentOutput(
                 agent_name=self.agent_name,
                 ticker=ticker,

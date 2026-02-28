@@ -285,7 +285,17 @@ Respond with JSON containing your score_update and reasoning."""
         )
 
         try:
-            data = json.loads(response)
+            # Remove markdown code blocks if present
+            cleaned_response = response.strip()
+            if cleaned_response.startswith("```json"):
+                cleaned_response = cleaned_response[7:]  # Remove ```json
+            elif cleaned_response.startswith("```"):
+                cleaned_response = cleaned_response[3:]  # Remove ```
+            if cleaned_response.endswith("```"):
+                cleaned_response = cleaned_response[:-3]  # Remove trailing ```
+            cleaned_response = cleaned_response.strip()
+
+            data = json.loads(cleaned_response)
             new_score = data.get('score_update', agent_output.score_0_100)
             reasoning = data.get('reasoning', 'No reasoning provided')
 
